@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <mirrors>
+        <mirror>
+            <id>maven.apps.local</id>
+            <name>mirror</name>
+            <url>${env.NEXUS_URL}/repository/maven-public/</url>
+            <mirrorOf>*</mirrorOf>
+        </mirror>
+    </mirrors>
+    <profiles>
+        <profile>
+            <id>default-repo</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>nexus-snapshots</id>
+                    <name>snapshots</name>
+                    <url>${env.NEXUS_URL}/repository/snapshots</url>
+                </repository>
+                <repository>
+                    <id>nexus-releases</id>
+                    <name>releases</name>
+                    <url>${env.NEXUS_URL}/repository/releases</url>
+                </repository>
+                <repository>
+                    <id>nexus-3rd-party</id>
+                    <name>3rd-party</name>
+                    <url>${env.NEXUS_URL}/repository/3rd-party</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+</settings>

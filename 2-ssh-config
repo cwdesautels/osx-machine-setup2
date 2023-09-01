@@ -1,0 +1,5 @@
+Host gitlab.com
+   PreferredAuthentications publickey
+   UseKeyChain yes
+   AddKeysToAgent yes
+   IdentityFile ~/.ssh/[private_key]
