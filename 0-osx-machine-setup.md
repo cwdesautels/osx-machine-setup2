@@ -83,7 +83,7 @@
     ~~~
     # You will need to edit the ssh config file to specify your created ssh key
     mkdir -p ~/.ssh
-    curl https://gitlab.com/-/snippets/2312210/raw/main/2-ssh-config -o ~/.ssh/config
+    curl https://gitlab.com/-/snippets/2592790/raw/main/2-ssh-config -o ~/.ssh/config
     ~~~
 
 2. Upload your SSH public key to your Gitlab profile [here](https://gitlab.com/-/profile/keys).
@@ -98,13 +98,13 @@
     ~~~
     # You will need to edit your profile (eg: ~/.zprofile) to create the NEXUS_URL environment variable
     mkdir -p ~/.m2
-    curl https://gitlab.com/-/snippets/2312210/raw/main/1-czrs-settings.xml -o ~/.m2/settings.xml
+    curl https://gitlab.com/-/snippets/2592790/raw/main/1-czrs-settings.xml -o ~/.m2/settings.xml
     # When executing maven you can specify the settings.xml to use
     mvn clean install --settings ~/.m2/settings.xml
     # Add some maven optimizations, in later IntelliJ version's Maven settings you can utilize these files as well
     mkdir -p ~/.mvn
-    curl https://gitlab.com/-/snippets/2312210/raw/main/3-maven-jvm.config -o ~/.mvn/jvm.config
-    curl https://gitlab.com/-/snippets/2312210/raw/main/4-maven-maven.config -o ~/.mvn/maven.config
+    curl https://gitlab.com/-/snippets/2592790/raw/main/3-maven-jvm.config -o ~/.mvn/jvm.config
+    curl https://gitlab.com/-/snippets/2592790/raw/main/4-maven-maven.config -o ~/.mvn/maven.config
     ~~~
 
 ## Podman
