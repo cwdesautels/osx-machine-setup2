@@ -125,6 +125,10 @@
     # Default the region and output format only
     aws configure
     # Your ~/.aws/config file should be populated now, this will enable the following:
+    ~~~
+
+3. Test AWS SSO:
+    ~~~
     aws sso login --profile [profile]
     # EKS test
     aws eks update-kubeconfig --name eks03 --profile [profile]
@@ -140,8 +144,12 @@
     ~~~
     podman machine init --cpus=4
     podman machine start
-    # Test podman
-    podman run -it ubuntu:12.04 /bin/bash
+    ~~~
+
+2. Test Podman:
+    ~~~
+    # Test podman with public image
+    podman run -it ubuntu:latest /bin/bash
     # Use private ECR
     aws-export-credentials --profile [profile_prod] --exec aws ecr get-login-password | podman login --username AWS --password-stdin [ecr_url]
     # Test podman with private image
