@@ -119,11 +119,11 @@
 
 2. Configure AWS SSO, requires VPN:
     ~~~
+    # Default the region and output format only, you will not have an access ID or key
+    aws configure
     # Ask IT for the SSO start url
     # For each profile you want to configure (dev, nonprod, prod etc) you will need to run the following:
     aws configure sso
-    # Default the region and output format only
-    aws configure
     # Your ~/.aws/config file should be populated now, this will enable the following:
     ~~~
 
