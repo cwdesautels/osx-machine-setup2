@@ -153,7 +153,7 @@
     # Use private ECR
     aws-export-credentials --profile [profile_prod] --exec aws ecr get-login-password | podman login --username AWS --password-stdin [ecr_url]
     # Test podman with private image
-    podman run -it [ecr_url] /bin/bash
+    podman run -it [ecr_url]/[ecr_image] /bin/bash
     # Shutdown command
     podman machine stop
     ~~~
