@@ -138,7 +138,7 @@
     # Ask IT for the SSO start url
     # For each profile you want to configure (dev, nonprod, prod etc) you will need to run the following:
     aws configure sso
-    # Your ~/.aws/config file should be populated now, this will enable the following:
+    # Your ~/.aws/config file should be populated now
     ~~~
 
 3. Test AWS SSO:
