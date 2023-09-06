@@ -111,7 +111,29 @@
 1. Configure Podman [here](https://conf.caesarsdigital.com/x/3YrDPg)
 
 ## AWS SSO
-1. Configure AWS SSO [here](https://conf.caesarsdigital.com/x/TUYFOw)
+1. Install CLI tooling
+    ~~~
+    pipx ensurepath
+    pipx install aws-sso-util aws-export-credentials
+    ~~~
+
+2. Configure AWS SSO
+    ~~~
+    # Ask IT for the SSO start url
+    # For each profile you want to configure (dev, nonprod, prod etc) you will need to run the following:
+    aws configure sso
+    # Default the region and output format only
+    aws configure
+    # Your ~/.aws/config file should be populated now, this will enable the following:
+    aws sso login --profile [profile]
+    # EKS test
+    aws eks update-kubeconfig --name eks03 --profile [profile]
+    kubectl get pods -n [namespace]
+    # Helm test
+    helm list -n [namespace]
+    # EKS test with export credentials
+    aws-export-credentials --profile [profile] --exec kubectl get pods -n [namespace]
+    ~~~
 
 ## VPN
 1. Ask IT 
