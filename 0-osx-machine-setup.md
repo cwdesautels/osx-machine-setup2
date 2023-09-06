@@ -92,7 +92,7 @@
     ~~~
     ssh-add --apple-use-keychain --apple-load-keychain ~/.ssh/[private_key]
     ~~~
-   
+
 ## Maven
 1. Update Maven settings.xml:
     ~~~
