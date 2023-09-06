@@ -19,9 +19,9 @@
     ~~~
 
 4. Install rosetta2 amd64 instruction emulation:
-   ~~~
-   softwareupdate --install-rosetta --agree-to-license
-   ~~~
+    ~~~
+    softwareupdate --install-rosetta --agree-to-license
+    ~~~
 
 5. Set blazingly fast keyrepeat, after applying restart:
     ~~~
@@ -107,8 +107,8 @@
     curl https://gitlab.com/-/snippets/2592790/raw/main/4-maven-maven.config -o ~/.mvn/maven.config
     ~~~
 
-## Podman
-1. Configure Podman [here](https://conf.caesarsdigital.com/x/3YrDPg)
+## VPN
+1. Ask IT, this is required for all subsequent steps 
 
 ## AWS SSO
 1. Install CLI tooling
@@ -117,7 +117,7 @@
     pipx install aws-sso-util aws-export-credentials
     ~~~
 
-2. Configure AWS SSO
+2. Configure AWS SSO, requires VPN
     ~~~
     # Ask IT for the SSO start url
     # For each profile you want to configure (dev, nonprod, prod etc) you will need to run the following:
@@ -135,8 +135,20 @@
     aws-export-credentials --profile [profile] --exec kubectl get pods -n [namespace]
     ~~~
 
-## VPN
-1. Ask IT 
+## Podman
+1. Setup podman, requires VPN and AWS SSO
+    ~~~
+    podman machine init --cpus=4
+    podman machine start
+    # Test podman
+    podman run -it ubuntu:12.04 /bin/bash
+    # Use private ECR
+    aws-export-credentials --profile [profile_prod] --exec aws ecr get-login-password | podman login --username AWS --password-stdin [ecr_url]
+    # Test podman with private image
+    podman run -it [ecr_url] /bin/bash
+    # Shutdown command
+    podman machine stop
+    ~~~
 
 ## IntelliJ
 1. Configure Maven plugin to download sources:
