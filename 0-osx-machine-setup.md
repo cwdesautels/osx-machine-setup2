@@ -2,28 +2,33 @@
 
 ## OSX
 1. Install XCode Command Line Tools:
+
     ~~~
     xcode-select --install
     ~~~
 
 2. Install Brew Package Manager:
+
     ~~~
     # reference: https://brew.sh:
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ~~~
 
 3. Install required packages:
+
     ~~~
     brew install git kubectl helm awscli asdf helmsman terragrunt sops maven podman java terraform python pipx
     brew install --cask intellij-idea postman visual-studio-code
     ~~~
 
 4. Install rosetta2 amd64 instruction emulation:
+
     ~~~
     softwareupdate --install-rosetta --agree-to-license
     ~~~
 
 5. Set blazingly fast keyrepeat, after applying restart:
+
     ~~~
     defaults write -g KeyRepeat -int 1
     defaults write -g InitialKeyRepeat -int 10
@@ -34,6 +39,7 @@
 
 ## Java
 1. (Optional) Manage JDK versions via brew:
+
     ~~~
     brew install openjdk@11 openjdk@8 openjdk@17
     # install location, You will need to edit your profile (eg: ~/.zprofile) to create the JAVA_HOME environment variable
@@ -43,6 +49,7 @@
     ~~~
 
 2. (Optional) Manage JDK versions via asdf:
+
     ~~~
     asdf plugin add java
     asdf list all java
@@ -61,6 +68,7 @@
     ~~~
 
 3. Add certifcates to your JDK(s):
+
     ~~~
     # Download cert yourself (https://stackoverflow.com/a/65435907) from Nexus, ask IT for the Nexus url and you will need to be on the VPN
     # JDK 8+
@@ -73,6 +81,7 @@
 
 ## Git
 1. Configure Git user, change John Doe to your user:
+
     ~~~
     git config --global user.name "John Doe"
     git config --global user.email johndoe@example.com
@@ -80,6 +89,7 @@
 
 ## SSH
 1. Create SSH keys for your machine using the tutorial [here](https://docs.gitlab.com/ee/user/ssh.html):
+
     ~~~
     # You will need to edit the ssh config file to specify your created ssh key
     mkdir -p ~/.ssh
@@ -89,12 +99,14 @@
 2. Upload your SSH public key to your Gitlab profile [here](https://gitlab.com/-/profile/keys).
 
 3. Add your created SSH key to OSX keychain:
+
     ~~~
     ssh-add --apple-use-keychain --apple-load-keychain ~/.ssh/[private_key]
     ~~~
 
 ## Maven
 1. Update Maven settings.xml:
+
     ~~~
     # You will need to edit your profile (eg: ~/.zprofile) to create the NEXUS_URL environment variable
     mkdir -p ~/.m2
@@ -112,12 +124,14 @@
 
 ## AWS SSO
 1. Install CLI tooling:
+
     ~~~
     pipx ensurepath
     pipx install aws-sso-util aws-export-credentials
     ~~~
 
 2. Configure AWS SSO, requires VPN:
+
     ~~~
     # Default the region and output format only, you will not have an access ID or key
     aws configure
@@ -128,6 +142,7 @@
     ~~~
 
 3. Test AWS SSO:
+
     ~~~
     aws sso login --profile [profile]
     # EKS test
@@ -141,12 +156,14 @@
 
 ## Podman
 1. Setup podman, requires VPN and AWS SSO:
+
     ~~~
     podman machine init --cpus=4
     podman machine start
     ~~~
 
 2. Test Podman:
+
     ~~~
     # Test podman with public image
     podman run -it ubuntu:latest /bin/bash
@@ -160,6 +177,7 @@
 
 ## Terraform
 1. Setup permissions, requires AWS SSO. Create a token with *read_repository* permission and an expiration date: https://gitlab.com/-/profile/personal_access_tokens
+
     ~~~
     # Execute this in the lowest level folder of our common terragrunt structure, for example: [project_root]/terragrunt/[aws_account]/[aws_region]/[terragrunt_module]/
     aws-export-credentials --profile [profile] --exec terragrunt init
@@ -169,6 +187,7 @@
     ~~~
 
 2. Test terraform
+
     ~~~
     aws-export-credentials --profile [profile] --exec terragrunt plan
     ~~~
