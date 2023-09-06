@@ -79,7 +79,7 @@
     ~~~
 
 ## SSH
-1. Create SSH keys for your machine using the tutorial [here](https://docs.gitlab.com/ee/user/ssh.html).
+1. Create SSH keys for your machine using the tutorial [here](https://docs.gitlab.com/ee/user/ssh.html):
     ~~~
     # You will need to edit the ssh config file to specify your created ssh key
     mkdir -p ~/.ssh
@@ -88,7 +88,7 @@
 
 2. Upload your SSH public key to your Gitlab profile [here](https://gitlab.com/-/profile/keys).
 
-3. Add your created SSH key to OSX keychain
+3. Add your created SSH key to OSX keychain:
     ~~~
     ssh-add --apple-use-keychain --apple-load-keychain ~/.ssh/[private_key]
     ~~~
@@ -111,13 +111,13 @@
 1. Ask IT, this is required for all subsequent steps 
 
 ## AWS SSO
-1. Install CLI tooling
+1. Install CLI tooling:
     ~~~
     pipx ensurepath
     pipx install aws-sso-util aws-export-credentials
     ~~~
 
-2. Configure AWS SSO, requires VPN
+2. Configure AWS SSO, requires VPN:
     ~~~
     # Ask IT for the SSO start url
     # For each profile you want to configure (dev, nonprod, prod etc) you will need to run the following:
@@ -136,7 +136,7 @@
     ~~~
 
 ## Podman
-1. Setup podman, requires VPN and AWS SSO
+1. Setup podman, requires VPN and AWS SSO:
     ~~~
     podman machine init --cpus=4
     podman machine start
