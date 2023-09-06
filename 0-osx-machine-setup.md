@@ -158,6 +158,21 @@
     podman machine stop
     ~~~
 
+## Terraform
+1. Setup permissions, requires AWS SSO. Create a token with *read_repository* permission and an expiration date: https://gitlab.com/-/profile/personal_access_tokens
+    ~~~
+    # Execute this in the lowest level folder of our common terragrunt structure
+    aws-export-credentials --profile [profile] --exec terragrunt init
+    # When utilizing git source backed terraform modules you will be prompted for credentials
+    Username for 'https://gitlab.com': [access_token_name]
+    Password for 'https://[access_token_name]@gitlab.com': [access_token_key] 
+    ~~~
+
+2. Test terraform
+    ~~~
+    aws-export-credentials --profile [profile] --exec terragrunt plan
+    ~~~
+
 ## IntelliJ
 1. Configure Maven plugin to download sources:
    * Navigate to: **IntelliJ > Preferences > Build > Build Tools > Maven > Importing**, automatically download sources and documentation.
