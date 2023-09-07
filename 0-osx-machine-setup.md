@@ -179,6 +179,8 @@
 1. Setup permissions, requires AWS SSO. Create a token with *read_repository* permission and an expiration date: https://gitlab.com/-/profile/personal_access_tokens
 
     ~~~
+    # Alternatively, you can export AWS SSO session variables in your console and forgo the following sso login and sso export
+    aws sso login --profile [profile]
     # Execute this in the lowest level folder of our common terragrunt structure, for example: [project_root]/terragrunt/[aws_account]/[aws_region]/[terragrunt_module]/
     aws-export-credentials --profile [profile] --exec terragrunt init
     # When utilizing git source backed terraform modules you will be prompted for credentials
