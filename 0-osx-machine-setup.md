@@ -150,8 +150,11 @@
     kubectl get pods -n [namespace]
     # Helm test
     helm list -n [namespace]
-    # EKS test with export credentials
+    # Kubctl test with export credentials
     aws-export-credentials --profile [profile] --exec kubectl get pods -n [namespace]
+    # Sops test with export credentials
+    aws-export-credentials --profile [profile] --exec sops -d -i [project_root]/helm/helmsman/[deployment]/envs/[aws_account].yaml
+    aws-export-credentials --profile [profile] --exec sops -e -i [project_root]/helm/helmsman/[deployment]/envs/[aws_account].yaml
     ~~~
 
 ## Podman
